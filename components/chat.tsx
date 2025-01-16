@@ -3,23 +3,28 @@
 'use client'
 
 import ChatMessage from '@/components/chat-message'
+import ChatMessageSkeleton from '@/components/chat-message-skeleton'
 import { useScrollToBottom } from '@/hooks/useScrollToBottom'
 import { cn } from '@/lib/utils'
 import { useChat } from 'ai/react'
 import { FormEvent } from 'react'
+import { toast } from 'sonner'
 
 export default function Chat() {
   const [messagesContainerRef, messagesEndRef] =
     useScrollToBottom<HTMLDivElement>()
 
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    // This is the endpoint where we send/receive messages
-    api: '/api/chat',
-    // If you want to limit the chain-of-thought or number of steps:
-    maxSteps: 5
-  })
+  const { messages, input, handleInputChange, handleSubmit, isLoading } =
+    useChat({
+      api: '/api/chat',
+      maxSteps: 5,
+      onResponse: (response: Response) => {
+        if (response.status === 429) {
+          toast.error('Too many requests. Please wait before trying again.')
+        }
+      }
+    })
 
-  // On form submit, we send the user input
   async function onSubmit(e: FormEvent) {
     e.preventDefault()
     handleSubmit()
@@ -35,6 +40,8 @@ export default function Chat() {
             message={m.content}
           />
         ))}
+
+        {isLoading && <ChatMessageSkeleton />}
 
         <div
           ref={messagesEndRef}

@@ -1,3 +1,4 @@
+import CopyButton from '@/components/ui/copy-button'
 import { FiCopy } from 'react-icons/fi'
 import { TbSparkles } from 'react-icons/tb'
 
@@ -48,9 +49,12 @@ export function AiMessage({ message }: MessageProps) {
           <p className='whitespace-pre-wrap text-foreground'>{message}</p>
         </div>
         <div>
-          <button className='border-background-2 text-foreground-2 rounded-md border p-1.5'>
+          <CopyButton
+            className='border-background-2 text-foreground-2 rounded-md border p-1.5'
+            copyText={message}
+          >
             <FiCopy className='h-3 w-3' />
-          </button>
+          </CopyButton>
         </div>
       </div>
     </div>

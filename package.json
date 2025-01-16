@@ -11,6 +11,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^1.0.19",
     "@neondatabase/serverless": "^0.10.4",
+    "@vercel/analytics": "^1.4.1",
     "ai": "^4.0.38",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",

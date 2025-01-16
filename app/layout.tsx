@@ -1,5 +1,6 @@
 import { FULL_NAME } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={cn(geistSans.variable, geistMono.variable, 'antialiased')}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   )

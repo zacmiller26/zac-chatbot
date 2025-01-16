@@ -22,7 +22,7 @@ export default function Home() {
 
         <main
           className={cn(
-            'relative w-full min-w-80 flex-1 overflow-hidden pb-2 lg:w-[620px]'
+            'relative w-full min-w-80 flex-1 overflow-hidden pb-2 lg:w-[700px]'
           )}
         >
           <Chat />

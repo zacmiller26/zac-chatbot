@@ -1,4 +1,5 @@
 import CopyButton from '@/components/ui/copy-button'
+import { cn } from '@/lib/utils'
 import { FiCopy } from 'react-icons/fi'
 import { TbSparkles } from 'react-icons/tb'
 
@@ -50,7 +51,10 @@ export function AiMessage({ message }: MessageProps) {
         </div>
         <div>
           <CopyButton
-            className='border-background-2 text-foreground-2 rounded-md border p-1.5'
+            className={cn(
+              'border-background-2 text-foreground-2 rounded-md border p-1.5',
+              'md:hover:text-accent md:hover:border-accent'
+            )}
             copyText={message}
           >
             <FiCopy className='h-3 w-3' />

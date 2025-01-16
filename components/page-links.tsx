@@ -47,13 +47,17 @@ export default function PageLinks() {
             target='_blank'
           >
             <Icon className={iconClassName} />
-            <span className='hidden lg:inline-block'>{link.label}</span>
+            <HideIfSmallScreen>{link.label}</HideIfSmallScreen>
           </Link>
         )
       })}
       <EmailAddressButton />
     </div>
   )
+}
+
+function HideIfSmallScreen({ children }: CommonProps) {
+  return <span className='hidden lg:inline-block'>{children}</span>
 }
 
 function EmailAddressButton() {
@@ -68,7 +72,7 @@ function EmailAddressButton() {
   return (
     <button className={buttonClassName} onClick={handleClick}>
       <FaEnvelope className='h-6 w-6 lg:h-3 lg:w-3' />
-      Email
+      <HideIfSmallScreen>Email</HideIfSmallScreen>
     </button>
   )
 }

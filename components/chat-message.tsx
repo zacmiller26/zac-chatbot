@@ -8,15 +8,20 @@ type ChatRole = 'user' | 'ai'
 interface ChatMessageProps {
   role: ChatRole
   message: string
+  isLoading?: boolean
 }
 
-export default function ChatMessage({ role, message }: ChatMessageProps) {
+export default function ChatMessage({
+  role,
+  message,
+  isLoading
+}: ChatMessageProps) {
   switch (role) {
     case 'user':
       return <UserMessage message={message} />
 
     case 'ai':
-      return <AiMessage message={message} />
+      return <AiMessage message={message} isLoading={isLoading} />
 
     default:
       throw new Error(`Unknown role: ${role}`)
@@ -25,6 +30,7 @@ export default function ChatMessage({ role, message }: ChatMessageProps) {
 
 interface MessageProps {
   message: string
+  isLoading?: boolean
 }
 
 export function UserMessage({ message }: MessageProps) {
@@ -39,11 +45,16 @@ export function UserMessage({ message }: MessageProps) {
   )
 }
 
-export function AiMessage({ message }: MessageProps) {
+export function AiMessage({ message, isLoading }: MessageProps) {
   return (
     <div className='flex justify-start gap-3'>
-      <div className='border-background-2 flex h-9 w-9 items-center justify-center rounded-full border'>
-        <TbSparkles className='h-5 w-5 text-foreground' />
+      <div
+        className={cn(
+          'border-background-2 flex h-9 w-9 items-center justify-center rounded-full border text-foreground transition-colors duration-300',
+          isLoading && 'text-accent border-accent animate-pulse'
+        )}
+      >
+        <TbSparkles className='h-5 w-5' />
       </div>
       <div className='flex flex-1 flex-col justify-start gap-2'>
         <div className='bg-secondary w-full flex-1'>

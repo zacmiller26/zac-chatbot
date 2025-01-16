@@ -11,9 +11,9 @@
   --foreground-1: #2f2f2f;
   --foreground-2: #4a4a4a;
 
-  --accent: #4956b9;
-  --accent-1: #6c79d6;
-  --accent-2: #98a4f9;
+  --accent: #6c79d6;
+  --accent-1: #98a4f9;
+  --accent-2: #a9b2fb;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,9 +26,9 @@
     --foreground-1: #dcdcdc;
     --foreground-2: #9c9c9c;
 
-    --accent: #98a4f9;
-    --accent-1: #6c79d6;
-    --accent-2: #4956b9;
+    --accent: #a9b2fb;
+    --accent-1: #98a4f9;
+    --accent-2: #6c79d6;
   }
 }
 

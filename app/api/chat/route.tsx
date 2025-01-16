@@ -6,6 +6,7 @@ import {
 } from '@/lib/templates/systemMessage'
 import { openai } from '@ai-sdk/openai'
 import { streamText } from 'ai'
+import { unstable_cache } from 'next/cache'
 import { NextRequest } from 'next/server'
 import { z } from 'zod'
 
@@ -14,6 +15,14 @@ const requestDataSchema = z.array(
     role: z.enum(['user', 'assistant']),
     content: z.string()
   })
+)
+
+const loadCachedPromptData = unstable_cache(
+  async () => {
+    return await Promise.all([queryInstructions(), queryContext()])
+  },
+  ['promptQueries'],
+  { revalidate: 60 * 60 * 24 }
 )
 
 export async function POST(req: NextRequest) {
@@ -26,10 +35,7 @@ export async function POST(req: NextRequest) {
     return new Response('Invalid request', { status: 400 })
   }
 
-  const [instructions, context] = await Promise.all([
-    queryInstructions(),
-    queryContext()
-  ])
+  const [instructions, context] = await loadCachedPromptData()
 
   const systemMessage: {
     role: 'system'

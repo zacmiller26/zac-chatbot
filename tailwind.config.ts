@@ -12,7 +12,7 @@ export default {
         // background colors
         background: 'var(--background)',
         'background-1': 'var(--background-1)',
-        'background-2': 'var(--background-1)',
+        'background-2': 'var(--background-2)',
         // foreground colors
         foreground: 'var(--foreground)',
         'foreground-1': 'var(--foreground-1)',

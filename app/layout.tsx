@@ -1,3 +1,4 @@
+import { FULL_NAME } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Zac Miller',
+  title: FULL_NAME,
   description: 'A web portfolio'
 }
 

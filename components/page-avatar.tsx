@@ -1,3 +1,4 @@
+import { FIRST_NAME } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
@@ -6,9 +7,9 @@ export default function PageAvatar(props: CommonProps) {
     <div className={cn('relative h-28 w-28 rounded-full', props.className)}>
       <Image
         fill
-        src='/avatar.jpg?v=3'
+        src='/avatar.jpg'
         sizes='(max-width: 768px) 32'
-        alt='Picture of Zac'
+        alt={`Avatar of ${FIRST_NAME}`}
         className='rounded-full object-cover object-center'
       />
     </div>

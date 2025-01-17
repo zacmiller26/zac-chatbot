@@ -16,16 +16,20 @@ const suggestedActions = [
     action: `Who is ${FIRST_NAME} ${LAST_NAME}?`
   },
   {
+    label: `Share a fun fact!`,
+    action: `What's a fun fact about ${FIRST_NAME} ${LAST_NAME}?`
+  },
+  {
     label: `What are his technical skills?`,
     action: `What are ${FIRST_NAME}'s core technical skills?`
   },
   {
-    label: `What is his recent work experience?`,
-    action: `What has ${FIRST_NAME} recently worked on?`
+    label: `${FIRST_NAME}'s recent work experience`,
+    action: `What is ${FIRST_NAME}'s recent professional experience?`
   },
   {
-    label: `What makes him stand out?`,
-    action: `What makes ${FIRST_NAME} stand out as a candidate?`
+    label: `What makes ${FIRST_NAME} unique?`,
+    action: `What unique qualities that ${FIRST_NAME} possesses make him stand out as a candidate?`
   }
 ]
 

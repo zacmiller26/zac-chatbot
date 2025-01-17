@@ -1,4 +1,4 @@
-import { FIRST_NAME, LAST_NAME } from '@/lib/constants'
+import { FIRST_NAME, LAST_NAME, PROMPT_CACHE_TAG } from '@/lib/constants'
 import { queryContext, queryInstructions } from '@/lib/db/queries'
 import {
   populateSystemMessage,
@@ -21,8 +21,11 @@ const loadCachedPromptData = unstable_cache(
   async () => {
     return await Promise.all([queryInstructions(), queryContext()])
   },
-  ['promptQueries'],
-  { revalidate: 60 * 60 * 24 }
+  [],
+  {
+    tags: [PROMPT_CACHE_TAG],
+    revalidate: 60 * 60 * 24
+  }
 )
 
 export async function POST(req: NextRequest) {

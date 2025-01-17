@@ -60,17 +60,19 @@ export function AiMessage({ message, isLoading }: MessageProps) {
         <div className='bg-secondary w-full flex-1'>
           <p className='whitespace-pre-wrap text-foreground'>{message}</p>
         </div>
-        <div>
-          <CopyButton
-            className={cn(
-              'border-background-2 text-foreground-2 rounded-md border p-1.5',
-              'md:hover:text-accent md:hover:border-accent'
-            )}
-            copyText={message}
-          >
-            <FiCopy className='h-3 w-3' />
-          </CopyButton>
-        </div>
+        {!isLoading && (
+          <div>
+            <CopyButton
+              className={cn(
+                'border-background-2 text-foreground-2 rounded-md border p-1.5',
+                'md:hover:text-accent md:hover:border-accent'
+              )}
+              copyText={message}
+            >
+              <FiCopy className='h-3 w-3' />
+            </CopyButton>
+          </div>
+        )}
       </div>
     </div>
   )
